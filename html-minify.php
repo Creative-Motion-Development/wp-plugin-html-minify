@@ -2,7 +2,7 @@
 	/**
 	 * Plugin Name: HTML Мinify
 	 * Plugin URI:
-	 * Description: Optimizes html code of your website and compressing it.
+	 * Description: Optimizes HTML code of your website and compressing it.
 	 * Author: Webcraftic <wordpress.webraftic@gmail.com>
 	 * Version: 1.0.0
 	 * Text Domain: html-minify

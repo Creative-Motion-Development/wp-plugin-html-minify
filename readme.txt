@@ -8,5 +8,8 @@ Requires PHP: 5.2
 Stable tag: trunk
 License: GPLv2
 
+= 1.0.0 =
+* Plugin release
+
 = 0.0.1 =
-* Plugin start
+* Plugin beta
