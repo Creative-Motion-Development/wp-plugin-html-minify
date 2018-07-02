@@ -142,7 +142,7 @@
 			 */
 			private function adminScripts()
 			{
-				//require(WHM_PLUGIN_DIR . '/admin/boot.php');
+				require(WHM_PLUGIN_DIR . '/admin/boot.php');
 				$this->registerPages();
 			}
 
@@ -161,11 +161,11 @@
 			 */
 			public function pluginsLoaded()
 			{
-				require_once( WHM_PLUGIN_DIR . '/includes/classes/class.mac-base.php' );
-				require_once( WHM_PLUGIN_DIR . '/includes/classes/class.mac-html.php' );
-				require_once( WHM_PLUGIN_DIR . '/includes/classes/class.mac-main.php' );
+				require_once(WHM_PLUGIN_DIR . '/includes/classes/class.mac-base.php');
+				require_once(WHM_PLUGIN_DIR . '/includes/classes/class.mac-html.php');
+				require_once(WHM_PLUGIN_DIR . '/includes/classes/class.mac-main.php');
 
-				require_once( WHM_PLUGIN_DIR . '/includes/classes/ext/php/minify-html.php' );
+				require_once(WHM_PLUGIN_DIR . '/includes/classes/ext/php/minify-html.php');
 
 				$plugin = new WHM_PluginMain();
 				$plugin->start();

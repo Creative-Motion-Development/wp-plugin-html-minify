@@ -24,7 +24,7 @@
 		 */
 		public $id = "html_minify"; // Уникальный идентификатор страницы
 		public $page_menu_dashicon = 'dashicons-testimonial'; // Иконка для закладки страницы, дашикон
-		//public $page_parent_page = "image_optimizer"; // Уникальный идентификатор родительской страницы
+		public $page_parent_page = "performance"; // Уникальный идентификатор родительской страницы
 
 		/**
 		 * @param Wbcr_Factory000_Plugin $plugin
@@ -44,6 +44,8 @@
 				$this->menu_target = 'options-general.php';
 				// Если true, добавляет ссылку "Настройки", рядом с действиями активации, деактивации плагина, на странице плагинов.
 				$this->add_link_to_plugin_actions = true;
+
+				$this->page_parent_page = null;
 			}
 
 			parent::__construct($plugin);
@@ -64,7 +66,7 @@
 		 *
 		 * @param $scripts
 		 * @param $styles
-         * 
+		 *
 		 * @since 1.0.0
 		 * @return void
 		 */
@@ -79,53 +81,6 @@
 			$this->scripts->add(WHM_PLUGIN_URL . '/admin/assets/js/general.js');
 		}
 
-		/**
-		 * Регистрируем уведомления для страницы
-		 *
-		 * @see libs\factory\pages\themplates\FactoryPages000_ImpressiveThemplate
-		 * @param $notices
-         * 
-		 * @return array
-		 */
-		public function getActionNotices($notices)
-		{
-
-			$notices[] = array(
-				'conditions' => array(
-					'wbcr_hm_clear_cache_success' => 1
-				),
-				'type' => 'success',
-				'message' => __('Кеш успешно очищен.', 'html-minify')
-			);
-
-			$notices[] = array(
-				'conditions' => array(
-					'wbcr_hm_test_success' => 1
-				),
-				'type' => 'success',
-				'message' => __('Пример успешного выполненного уведомления.', 'html-minify')
-			);
-
-			$notices[] = array(
-				'conditions' => array(
-					'wbcr_hm_test_error' => 1,
-					'wbcr_hm_code' => 'interal_error'
-				),
-				'type' => 'danger',
-				'message' => __('Пример уведомления об ошибке.', 'html-minify')
-			);
-
-			return $notices;
-		}
-
-		/**
-		 * Вызывается всегда при загрузке страницы, перед опциями формы с типом страницы options
-		 */
-		protected function warningNotice()
-		{
-			$this->printErrorNotice(__("The backup folder wp-content/uploads/backup/ cannot be created or is not writable by the server, original images cannot be saved!", 'wbcr_factory_pages_000'));
-		}
-		
 		/**
 		 * Метод должен передать массив опций для создания формы с полями.
 		 * Созданием страницы и формы занимается фреймворк
