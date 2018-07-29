@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class WHM_PluginMain
+ * Class WHTM_PluginMain
  */
-class WHM_PluginMain
+class WHTM_PluginMain
 {
     const INIT_EARLIER_PRIORITY = -1;
     const DEFAULT_HOOK_PRIORITY = 2;
@@ -40,36 +40,36 @@ class WHM_PluginMain
     public function setup()
     {
         // These can be overridden by specifying them in wp-config.php or such.
-        if ( ! defined( 'WHM_WP_CONTENT_NAME' ) ) {
-            define( 'WHM_WP_CONTENT_NAME', '/' . wp_basename( WP_CONTENT_DIR ) );
+        if ( ! defined( 'WHTM_WP_CONTENT_NAME' ) ) {
+            define( 'WHTM_WP_CONTENT_NAME', '/' . wp_basename( WP_CONTENT_DIR ) );
         }
 
-        define( 'WHM_ROOT_DIR', substr( WP_CONTENT_DIR, 0, strlen( WP_CONTENT_DIR ) - strlen( WHM_WP_CONTENT_NAME ) ) );
+        define( 'WHTM_ROOT_DIR', substr( WP_CONTENT_DIR, 0, strlen( WP_CONTENT_DIR ) - strlen( WHTM_WP_CONTENT_NAME ) ) );
 
-        if ( ! defined( 'WHM_WP_SITE_URL' ) ) {
+        if ( ! defined( 'WHTM_WP_SITE_URL' ) ) {
         	// domain_mapping_siteurl функция из плагина, который позволяет задавать свой домен для подсайта
             if ( function_exists( 'domain_mapping_siteurl' ) ) {
-                define( 'WHM_WP_SITE_URL', domain_mapping_siteurl( get_current_blog_id() ) );
+                define( 'WHTM_WP_SITE_URL', domain_mapping_siteurl( get_current_blog_id() ) );
             } else {
-                define( 'WHM_WP_SITE_URL', site_url() );
+                define( 'WHTM_WP_SITE_URL', site_url() );
             }
         }
 
-        if ( ! defined( 'WHM_WP_CONTENT_URL' ) ) {
+        if ( ! defined( 'WHTM_WP_CONTENT_URL' ) ) {
 	        // get_original_url функция из плагина, который позволяет задавать свой домен для подсайта
             if ( function_exists( 'get_original_url' ) ) {
-                define( 'WHM_WP_CONTENT_URL', str_replace( get_original_url( WHM_WP_SITE_URL ), WHM_WP_SITE_URL, content_url() ) );
+                define( 'WHTM_WP_CONTENT_URL', str_replace( get_original_url( WHTM_WP_SITE_URL ), WHTM_WP_SITE_URL, content_url() ) );
             } else {
-                define( 'WHM_WP_CONTENT_URL', content_url() );
+                define( 'WHTM_WP_CONTENT_URL', content_url() );
             }
         }
 
-        if ( ! defined( 'WHM_WP_ROOT_URL' ) ) {
-            define( 'WHM_WP_ROOT_URL', str_replace( WHM_WP_CONTENT_NAME, '', WHM_WP_CONTENT_URL ) );
+        if ( ! defined( 'WHTM_WP_ROOT_URL' ) ) {
+            define( 'WHTM_WP_ROOT_URL', str_replace( WHTM_WP_CONTENT_NAME, '', WHTM_WP_CONTENT_URL ) );
         }
 
-        if ( ! defined( 'WHM_HASH' ) ) {
-            define( 'WHM_HASH', wp_hash( time() ) );
+        if ( ! defined( 'WHTM_HASH' ) ) {
+            define( 'WHTM_HASH', wp_hash( time() ) );
         }
     }
 
@@ -78,16 +78,16 @@ class WHM_PluginMain
 	 */
     public function run()
     {
-        if ( WHM_Plugin::app()->getOption('html_optimize') ) {
+        if ( WHTM_Plugin::app()->getOption('html_optimize') ) {
             // Hook into WordPress frontend.
-            if ( defined( 'WHM_INIT_EARLIER' ) ) {
+            if ( defined( 'WHTM_INIT_EARLIER' ) ) {
                 add_action( 'init', array( $this, 'startBuffering' ), self::INIT_EARLIER_PRIORITY );
             } else {
-                if ( ! defined( 'WHM_HOOK_INTO' ) ) {
-                    define( 'WHM_HOOK_INTO', 'template_redirect' );
+                if ( ! defined( 'WHTM_HOOK_INTO' ) ) {
+                    define( 'WHTM_HOOK_INTO', 'template_redirect' );
                 }
                 add_action(
-                    constant( 'WHM_HOOK_INTO' ),
+                    constant( 'WHTM_HOOK_INTO' ),
                     array( $this, 'startBuffering' ),
                     self::DEFAULT_HOOK_PRIORITY
                 );
@@ -169,7 +169,7 @@ class WHM_PluginMain
              * and not turned off explicitly and not when being previewed in Customizer)!
              * NOTE: Tests throw a notice here due to is_feed() being called
              * while the main query hasn't been ran yet. Thats why we use
-             * WHM_INIT_EARLIER in tests.
+             * WHTM_INIT_EARLIER in tests.
              */
             $do_buffering = ( ! is_admin() && ! is_feed() && ! $whm_noptimize && ! $is_customize_preview );
         }
@@ -240,13 +240,13 @@ class WHM_PluginMain
 
         // Determine what needs to be ran.
         $classes = array();
-	    if ( WHM_Plugin::app()->getOption( 'html_optimize' ) ) {
-		    $classes[] = 'WHM_PluginHTML';
+	    if ( WHTM_Plugin::app()->getOption( 'html_optimize' ) ) {
+		    $classes[] = 'WHTM_PluginHTML';
 	    }
 
 	    $classoptions = array(
-		    'WHM_PluginHTML'    => array(
-			    'keepcomments' => WHM_Plugin::app()->getOption( 'html_keepcomments' ),
+		    'WHTM_PluginHTML'    => array(
+			    'keepcomments' => WHTM_Plugin::app()->getOption( 'html_keepcomments' ),
 		    ),
 	    );
 

@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class WHM_PluginBase
+ * Class WHTM_PluginBase
  */
-abstract class WHM_PluginBase
+abstract class WHTM_PluginBase
 {
     /**
      * Holds content being processed (html, scripts, styles)
@@ -30,7 +30,7 @@ abstract class WHM_PluginBase
     public $debug_log = false;
 
 	/**
-	 * WHM_PluginBase constructor.
+	 * WHTM_PluginBase constructor.
 	 *
 	 * @param $content
 	 */
@@ -168,7 +168,7 @@ abstract class WHM_PluginBase
     public static function buildMarker( $name, $data, $hash = null )
     {
         // Start the marker, add the data.
-        $marker = '%%' . $name . WHM_HASH . '%%' . base64_encode( $data );
+        $marker = '%%' . $name . WHTM_HASH . '%%' . base64_encode( $data );
 
         // Add the hash if provided.
         if ( null !== $hash ) {
@@ -203,7 +203,7 @@ abstract class WHM_PluginBase
      * If something is found, it replaces `$content` using `$re_replace_pattern`,
      * effectively creating our named markers (`%%{$marker}%%`.
      * These are then at some point replaced back to their actual/original/modified
-     * contents using `WHM_PluginBase::restoreMarkedContent()`.
+     * contents using `WHTM_PluginBase::restoreMarkedContent()`.
      *
      * @param string $marker Marker name (without percent characters).
      * @param string $search A string or full blown regex pattern to search for in $content. Uses `strpos()` or `preg_match()`.
@@ -225,7 +225,7 @@ abstract class WHM_PluginBase
             $content = preg_replace_callback(
                 $re_replace_pattern,
                 function( $matches ) use ( $marker ) {
-                    return WHM_PluginBase::buildMarker( $marker, $matches[0] );
+                    return WHTM_PluginBase::buildMarker( $marker, $matches[0] );
                 },
                 $content
             );
@@ -235,7 +235,7 @@ abstract class WHM_PluginBase
     }
 
     /**
-     * Complements `WHM_PluginBase::replaceContentsWithMarkerIfExists()`.
+     * Complements `WHTM_PluginBase::replaceContentsWithMarkerIfExists()`.
      *
      * @param string $marker Marker.
      * @param string $content Markup.
@@ -246,7 +246,7 @@ abstract class WHM_PluginBase
     {
         if ( false !== strpos( $content, $marker ) ) {
             $content = preg_replace_callback(
-                '#%%' . $marker . WHM_HASH . '%%(.*?)%%' . $marker . '%%#is',
+                '#%%' . $marker . WHTM_HASH . '%%(.*?)%%' . $marker . '%%#is',
                 function ( $matches ) {
                     return base64_decode( $matches[1] );
                 },

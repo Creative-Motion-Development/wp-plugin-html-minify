@@ -8,5 +8,5 @@
 	// remove plugin options
 	global $wpdb;
 
-	$wpdb->query("DELETE FROM {$wpdb->prefix}options WHERE option_name LIKE 'wbcr_hm_%';");
+	$wpdb->query("DELETE FROM {$wpdb->prefix}options WHERE option_name LIKE 'wbcr_htm_%';");
 

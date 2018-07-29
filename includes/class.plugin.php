@@ -11,24 +11,24 @@
 		exit;
 	}
 
-	if( !class_exists('WHM_Plugin') ) {
-		if( !class_exists('WHM_PluginFactory') ) {
+	if( !class_exists('WHTM_Plugin') ) {
+		if( !class_exists('WHTM_PluginFactory') ) {
 			// Этот плагин может быть аддоном плагина Clearfy, если он загружен, как аддон, то мы не подключаем фреймворк,
 			// а наследуем функции фреймворка от плагина Clearfy. Если плагин скомпилирован, как отдельный плагин, то он использует собственный фреймворк для работы.
 			// Константа LOADING_HTML_MINIFY_AS_ADDON утсанавливается в классе libs/factory/core/includes/Wbcr_Factory000_Plugin
 
 			if( defined('LOADING_HTML_MINIFY_AS_ADDON') ) {
-				class WHM_PluginFactory {
+				class WHTM_PluginFactory {
 					
 				}
 			} else {
-				class WHM_PluginFactory extends Wbcr_Factory000_Plugin {
+				class WHTM_PluginFactory extends Wbcr_Factory000_Plugin {
 					
 				}
 			}
 		}
 		
-		class WHM_Plugin extends WHM_PluginFactory {
+		class WHTM_Plugin extends WHTM_PluginFactory {
 			
 			/**
 			 * @var Wbcr_Factory000_Plugin
@@ -82,10 +82,10 @@
 			 * Статический метод для быстрого доступа к информации о плагине, а также часто использумых методах.
 			 *
 			 * Пример:
-			 * WHM_Plugin::app()->getOption()
-			 * WHM_Plugin::app()->updateOption()
-			 * WHM_Plugin::app()->deleteOption()
-			 * WHM_Plugin::app()->getPluginName()
+			 * WHTM_Plugin::app()->getOption()
+			 * WHTM_Plugin::app()->updateOption()
+			 * WHTM_Plugin::app()->deleteOption()
+			 * WHTM_Plugin::app()->getPluginName()
 			 *
 			 * @return Wbcr_Factory000_Plugin
 			 */
@@ -100,7 +100,7 @@
 			protected function setTextDomain()
 			{
 				// Localization plugin
-				load_plugin_textdomain('html-minify', false, dirname(WHM_PLUGIN_BASE) . '/languages/');
+				load_plugin_textdomain('html-minify', false, dirname(WHTM_PLUGIN_BASE) . '/languages/');
 			}
 
 			/**
@@ -128,13 +128,13 @@
 			private function registerPages()
 			{
 
-				$admin_path = WHM_PLUGIN_DIR . '/admin/pages';
+				$admin_path = WHTM_PLUGIN_DIR . '/admin/pages';
 
 				// Пример основной страницы настроек
-				self::app()->registerPage('WHM_SettingsPage', $admin_path . '/settings.php');
+				self::app()->registerPage('WHTM_SettingsPage', $admin_path . '/settings.php');
 
 				// Пример внутренней страницы настроек
-				//self::app()->registerPage('WHM_StatisticPage', $admin_path . '/statistic.php');
+				//self::app()->registerPage('WHTM_StatisticPage', $admin_path . '/statistic.php');
 			}
 
 			/**
@@ -142,7 +142,7 @@
 			 */
 			private function adminScripts()
 			{
-				require(WHM_PLUGIN_DIR . '/admin/boot.php');
+				require(WHTM_PLUGIN_DIR . '/admin/boot.php');
 				$this->registerPages();
 			}
 
@@ -151,8 +151,8 @@
 			 */
 			private function globalScripts()
 			{
-				//require(WHM_PLUGIN_DIR . '/includes/classes/class.configurate-comments.php');
-				//new WHM_ConfigComments(self::$app);
+				//require(WHTM_PLUGIN_DIR . '/includes/classes/class.configurate-comments.php');
+				//new WHTM_ConfigComments(self::$app);
 			}
 
 			/**
@@ -161,13 +161,13 @@
 			 */
 			public function pluginsLoaded()
 			{
-				require_once(WHM_PLUGIN_DIR . '/includes/classes/class.mac-base.php');
-				require_once(WHM_PLUGIN_DIR . '/includes/classes/class.mac-html.php');
-				require_once(WHM_PLUGIN_DIR . '/includes/classes/class.mac-main.php');
+				require_once(WHTM_PLUGIN_DIR . '/includes/classes/class.mac-base.php');
+				require_once(WHTM_PLUGIN_DIR . '/includes/classes/class.mac-html.php');
+				require_once(WHTM_PLUGIN_DIR . '/includes/classes/class.mac-main.php');
 
-				require_once(WHM_PLUGIN_DIR . '/includes/classes/ext/php/minify-html.php');
+				require_once(WHTM_PLUGIN_DIR . '/includes/classes/ext/php/minify-html.php');
 
-				$plugin = new WHM_PluginMain();
+				$plugin = new WHTM_PluginMain();
 				$plugin->start();
 			}
 		}

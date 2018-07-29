@@ -2,12 +2,12 @@
 	/**
 	 * Plugin Name: HTML Мinify
 	 * Plugin URI:
-	 * Description: Optimizes HTML code of your website and compressing it.
+	 * Description: Ever look at the HTML markup of your website and notice how sloppy and amateurish it looks? The HTML Мinify options cleans up sloppy looking markup and minifies, which also speeds up download.
 	 * Author: Webcraftic <wordpress.webraftic@gmail.com>
 	 * Version: 1.0.0
 	 * Text Domain: html-minify
 	 * Domain Path: /languages/
-	 * Author URI:
+	 * Author URI: https://clearfy.pro
 	 */
 
 	// Exit if accessed directly
@@ -19,32 +19,32 @@
 	 * Уведомление о том, что этот плагин используется уже в составе плагина Clearfy, как его компонент.
 	 * Мы блокируем работу этого плагина, чтобы не вызывать конфликт.
 	 */
-	if( defined('WHM_PLUGIN_ACTIVE') || (defined('WHM_PLUGIN_ACTIVE') && !defined('LOADING_HTML_MINIFY_AS_ADDON')) ) {
-		function wbcr_hm_admin_notice_error()
+	if( defined('WHTM_PLUGIN_ACTIVE') || (defined('WHTM_PLUGIN_ACTIVE') && !defined('LOADING_HTML_MINIFY_AS_ADDON')) ) {
+		function wbcr_htm_admin_notice_error()
 		{
 			?>
 			<div class="notice notice-error">
-				<p><?php _e('We found that you have the "Clearfy - wordpress optimization plugin" plugin installed, this plugin already has disable comments functions, so you can deactivate plugin "Image optimizer"!'); ?></p>
+				<p><?php _e('We found that you have the "Clearfy - wordpress optimization plugin" plugin installed, this plugin already has Html minify functions, so you can deactivate plugin "Html minify"!'); ?></p>
 			</div>
 		<?php
 		}
 
-		add_action('admin_notices', 'wbcr_hm_admin_notice_error');
+		add_action('admin_notices', 'wbcr_htm_admin_notice_error');
 
 		return;
 	} else {
 
 		// Устанавливаем контстанту, что плагин уже используется
-		define('WHM_PLUGIN_ACTIVE', true);
+		define('WHTM_PLUGIN_ACTIVE', true);
 
 		// Директория плагина
-		define('WHM_PLUGIN_DIR', dirname(__FILE__));
+		define('WHTM_PLUGIN_DIR', dirname(__FILE__));
 
 		// Относительный путь к плагину
-		define('WHM_PLUGIN_BASE', plugin_basename(__FILE__));
+		define('WHTM_PLUGIN_BASE', plugin_basename(__FILE__));
 
 		// Ссылка к директории плагина
-		define('WHM_PLUGIN_URL', plugins_url(null, __FILE__));
+		define('WHTM_PLUGIN_URL', plugins_url(null, __FILE__));
 
 		#comp remove
 		// Эта часть кода для компилятора, не требует редактирования
@@ -88,25 +88,25 @@
 
 		if( !defined('LOADING_HTML_MINIFY_AS_ADDON') ) {
 			// Фреймворк - отвечает за интерфейс, содержит общие функции для серии плагинов и готовые шаблоны для быстрого развертывания плагина.
-			require_once(WHM_PLUGIN_DIR . '/libs/factory/core/boot.php');
+			require_once(WHTM_PLUGIN_DIR . '/libs/factory/core/boot.php');
 		}
 
 		// Основной класс плагина
-		require_once(WHM_PLUGIN_DIR . '/includes/class.plugin.php');
+		require_once(WHTM_PLUGIN_DIR . '/includes/class.plugin.php');
 
-		// Класс WHM_Plugin создается только, если этот плагин работает, как самостоятельный плагин.
+		// Класс WHTM_Plugin создается только, если этот плагин работает, как самостоятельный плагин.
 		// Если плагин работает, как аддон, то класс создается родительским плагином.
 
 		if( !defined('LOADING_HTML_MINIFY_AS_ADDON') ) {
-			new WHM_Plugin(__FILE__, array(
-				'prefix' => 'wbcr_hm_', // префикс для базы данных и полей формы
+			new WHTM_Plugin(__FILE__, array(
+				'prefix' => 'wbcr_htm_', // префикс для базы данных и полей формы
 				'plugin_name' => 'wbcr_html_minify', // имя плагина, как уникальный идентификатор
 				'plugin_title' => __('Webcraftic HTML Minify', 'html-minify'), // заголовок плагина
 				'plugin_version' => '1.0.0', // текущая версия плагина
 				'required_php_version' => '5.2', // минимальная версия php для работы плагина
 				'required_wp_version' => '4.2', // минимальная версия wp для работы плагина
 				'plugin_build' => BUILD_TYPE, // сборка плагина
-				//'updates' => WHM_PLUGIN_DIR . '/updates/' в этой папке хранятся миграции для разных версий плагина
+				//'updates' => WHTM_PLUGIN_DIR . '/updates/' в этой папке хранятся миграции для разных версий плагина
 			));
 		}
 	}

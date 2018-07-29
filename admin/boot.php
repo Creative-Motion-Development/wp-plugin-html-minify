@@ -13,50 +13,43 @@
 
 	function wbcr_htm_group_options($options)
 	{
-		/*$options[] = array(
-			'name' => 'disable_comments',
-			'title' => __('Disable comments on the entire site', 'minify-and-combine'),
-			'tags' => array('disable_all_comments'),
-			'values' => array('disable_all_comments' => 'disable_comments')
+		$options[] = array(
+			'name' => 'html_optimize',
+			'title' => __('Optimize HTML Code?', 'html-minify'),
+			'tags' => array('optimize_html', 'optimize_code', 'hide_my_wp'),
+			'values' => array()
 		);
 		$options[] = array(
-			'name' => 'disable_comments_for_post_types',
-			'title' => __('Select post types', 'minify-and-combine'),
-			'tags' => array()
+			'name' => 'html_keepcomments',
+			'title' => __('Keep HTML comments?', 'html-minify'),
+			'tags' => array(),
+			'values' => array()
 		);
-		$options[] = array(
-			'name' => 'comment_text_convert_links_pseudo',
-			'title' => __('Replace external links in comments on the JavaScript code', 'minify-and-combine'),
-			'tags' => array('recommended', 'seo_optimize')
-		);
-		$options[] = array(
-			'name' => 'pseudo_comment_author_link',
-			'title' => __('Replace external links from comment authors on the JavaScript code', 'minify-and-combine'),
-			'tags' => array('recommended', 'seo_optimize')
-		);
-		$options[] = array(
-			'name' => 'remove_x_pingback',
-			'title' => __('Disable X-Pingback', 'minify-and-combine'),
-			'tags' => array('recommended', 'defence', 'disable_all_comments')
-		);
-		$options[] = array(
-			'name' => 'remove_url_from_comment_form',
-			'title' => __('Remove field "site" in comment form', 'minify-and-combine'),
-			'tags' => array()
-		);*/
 
 		return $options;
 	}
 
 	add_filter("wbcr_clearfy_group_options", 'wbcr_htm_group_options');
 
+	/**
+	 * Adds a new mode to the Quick Setup page
+	 *
+	 * @param array $mods
+	 * @return mixed
+	 */
 	function wbcr_htm_allow_quick_mods($mods)
 	{
-		$mod['html_minify'] = array(
-			'title' => __('One click optimize html', 'minify-and-combine'),
+		if( !defined('WMAC_PLUGIN_ACTIVE') ) {
+			$title = __('One click optimize html code', 'html-minify');
+		} else {
+			$title = __('One click optimize html code and scripts', 'html-minify');
+		}
+
+		$mod['optimize_code'] = array(
+			'title' => $title,
 			'icon' => 'dashicons-performance'
 		);
-		
+
 		return $mod + $mods;
 	}
 

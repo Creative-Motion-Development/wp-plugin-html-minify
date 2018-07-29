@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class WHM_PluginHTML
+ * Class WHTM_PluginHTML
  */
-class WHM_PluginHTML extends WHM_PluginBase
+class WHTM_PluginHTML extends WHTM_PluginBase
 {
     /**
      * Force xhtml.

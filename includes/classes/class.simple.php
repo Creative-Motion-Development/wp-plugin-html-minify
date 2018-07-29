@@ -12,7 +12,7 @@
 		exit;
 	}
 
-	class WHM_ConfigComments extends Wbcr_FactoryClearfy000_Configurate {
+	class WHTM_ConfigComments extends Wbcr_FactoryClearfy000_Configurate {
 
 		private $modified_types = array();
 
@@ -176,7 +176,7 @@
 
 		public function dummyCommentsTemplate()
 		{
-			return WHM_PLUGIN_DIR . '/includes/comments-template.php';
+			return WHTM_PLUGIN_DIR . '/includes/comments-template.php';
 		}
 
 		/*
@@ -406,7 +406,7 @@
 				return;
 			}
 
-			wp_enqueue_style('wbcr-comments-plus-url-span', WHM_PLUGIN_URL . '/assets/css/url-span.css', array(), $this->plugin->getPluginVersion());
-			wp_enqueue_script('wbcr-comments-plus-url-span', WHM_PLUGIN_URL . '/assets/js/url-span.js', array('jquery'), $this->plugin->getPluginVersion(), true);
+			wp_enqueue_style('wbcr-comments-plus-url-span', WHTM_PLUGIN_URL . '/assets/css/url-span.css', array(), $this->plugin->getPluginVersion());
+			wp_enqueue_script('wbcr-comments-plus-url-span', WHTM_PLUGIN_URL . '/assets/js/url-span.js', array('jquery'), $this->plugin->getPluginVersion(), true);
 		}
 	}
