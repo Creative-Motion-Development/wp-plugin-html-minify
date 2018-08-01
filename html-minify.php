@@ -1,7 +1,7 @@
 <?php
 	/**
 	 * Plugin Name: HTML Мinify
-	 * Plugin URI:
+	 * Plugin URI: https://clearfy.pro/html-minify/
 	 * Description: Ever look at the HTML markup of your website and notice how sloppy and amateurish it looks? The HTML Мinify options cleans up sloppy looking markup and minifies, which also speeds up download.
 	 * Author: Webcraftic <wordpress.webraftic@gmail.com>
 	 * Version: 1.0.0
@@ -10,9 +10,34 @@
 	 * Author URI: https://clearfy.pro
 	 */
 
+	/*
+	 * #### CREDITS ####
+	 * This plugin is based on the plugin Autoptimize by the author Frank Goossens, we have finalized this code for our project and our goals.
+	 * Many thanks to Frank Goossens for the quality solution for optimizing scripts in Wordpress.
+	 *
+	 * Public License is a GPLv2 compatible license allowing you to change and use this version of the plugin for free.
+	 */
+
 	// Exit if accessed directly
 	if( !defined('ABSPATH') ) {
 		exit;
+	}
+
+	/**
+	 * Troubleshoot old versions of PHP on the client server
+	 */
+	if( version_compare(PHP_VERSION, '5.4.0', '<') ) {
+		function wbcr_htm_admin_notice_php_error()
+		{
+			?>
+			<div class="notice notice-error">
+				<p><?php _e('The job of the component "Html minify" component has been suspended! You are using the old version of PHP. Please update the PHP version to 5.4 or later to continue to use this component!', 'html-minify'); ?></p>
+			</div>
+		<?php
+		}
+
+		add_action('admin_notices', 'wbcr_htm_admin_notice_php_error');
+		return;
 	}
 
 	/**
@@ -24,7 +49,7 @@
 		{
 			?>
 			<div class="notice notice-error">
-				<p><?php _e('We found that you have the "Clearfy - wordpress optimization plugin" plugin installed, this plugin already has Html minify functions, so you can deactivate plugin "Html minify"!'); ?></p>
+				<p><?php _e('We found that you have the "Clearfy - wordpress optimization plugin" plugin installed, this plugin already has Html minify functions, so you can deactivate plugin "Html minify"!', 'html-minify'); ?></p>
 			</div>
 		<?php
 		}
