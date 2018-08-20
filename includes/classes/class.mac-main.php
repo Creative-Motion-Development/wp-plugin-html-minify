@@ -39,7 +39,9 @@ class WHTM_PluginMain
 	 * Initialization hooks
 	 */
 	public function hook() {
-		add_action( 'wp_loaded', array( $this, 'wpLoaded' ) );
+		if ( WHTM_Plugin::app()->getOption('html_optimize') ) {
+			add_action( 'wp_loaded', array( $this, 'removeCacheMessage' ) );
+		}
 	}
 
 	/**
@@ -276,12 +278,10 @@ class WHTM_PluginMain
     }
 
 	/**
-	 * Action wp_loaded
+	 * Remove Cache Status Messages
 	 */
-	public function wpLoaded()
+	public function removeCacheMessage()
 	{
-		// No Cache Status Messages
-
 		// For WP Super Cache
 		if ( file_exists( WP_CONTENT_DIR . '/wp-cache-config.php' ) && function_exists( 'prune_super_cache' ) ) {
 			global $wp_super_cache_comments;
