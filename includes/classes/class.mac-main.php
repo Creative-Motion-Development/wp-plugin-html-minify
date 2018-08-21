@@ -31,7 +31,17 @@ class WHTM_PluginMain
 	public function start()
 	{
 		$this->setup();
+		$this->hook();
 		$this->run();
+	}
+
+	/**
+	 * Initialization hooks
+	 */
+	public function hook() {
+		if ( WHTM_Plugin::app()->getOption('html_optimize') ) {
+			add_action( 'wp_loaded', array( $this, 'removeCacheMessage' ) );
+		}
 	}
 
 	/**
@@ -266,5 +276,27 @@ class WHTM_PluginMain
 
         return $content;
     }
+
+	/**
+	 * Remove Cache Status Messages
+	 */
+	public function removeCacheMessage()
+	{
+		// For WP Super Cache
+		if ( file_exists( WP_CONTENT_DIR . '/wp-cache-config.php' ) && function_exists( 'prune_super_cache' ) ) {
+			global $wp_super_cache_comments;
+			$wp_super_cache_comments = 0;
+		}
+
+		// For WP Fastest Cache
+		if ( class_exists( 'WpFastestCache' ) ) {
+			define( 'WPFC_REMOVE_FOOTER_COMMENT', true );
+		}
+
+		// For WP Total Cache
+		if ( function_exists( 'w3tc_pgcache_flush' ) ) {
+			add_filter( 'w3tc_footer_comment', '__return_empty_array' );
+		}
+	}
 
 }
