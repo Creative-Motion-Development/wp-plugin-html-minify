@@ -4,7 +4,7 @@
 	 * Plugin URI: https://clearfy.pro/html-minify/
 	 * Description: Ever look at the HTML markup of your website and notice how sloppy and amateurish it looks? The HTML Мinify options cleans up sloppy looking markup and minifies, which also speeds up download.
 	 * Author: Webcraftic <wordpress.webraftic@gmail.com>
-	 * Version: 1.0.0
+	 * Version: 1.0.1
 	 * Text Domain: html-minify
 	 * Domain Path: /languages/
 	 * Author URI: https://clearfy.pro
@@ -127,7 +127,7 @@
 				'prefix' => 'wbcr_htm_', // префикс для базы данных и полей формы
 				'plugin_name' => 'wbcr_html_minify', // имя плагина, как уникальный идентификатор
 				'plugin_title' => __('Webcraftic HTML Minify', 'html-minify'), // заголовок плагина
-				'plugin_version' => '1.0.0', // текущая версия плагина
+				'plugin_version' => '1.0.1', // текущая версия плагина
 				'required_php_version' => '5.2', // минимальная версия php для работы плагина
 				'required_wp_version' => '4.2', // минимальная версия wp для работы плагина
 				'plugin_build' => BUILD_TYPE, // сборка плагина

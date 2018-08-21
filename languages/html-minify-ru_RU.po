@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: clearfy\n"
-"POT-Creation-Date: 2018-08-15 03:40+0300\n"
-"PO-Revision-Date: 2018-08-15 04:46+0300\n"
+"POT-Creation-Date: 2018-08-19 03:46+0300\n"
+"PO-Revision-Date: 2018-08-19 03:48+0300\n"
 "Last-Translator: alex.kovalevv@gmail.com <alex.kovalevv@gmail.com>\n"
 "Language-Team: Alex Kovalev <alex.kovalevv@gmail.com>\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.8\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -18,19 +18,29 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: libs\n"
 
-#: admin/boot.php:18 admin/pages/settings.php:101
+#: admin/boot.php:23
+msgid ""
+"Clearfy: Html minify component is not compatible with the Autoptimize "
+"plugin, please do not use them together to avoid conflicts. Please disable "
+"the Html minify component"
+msgstr ""
+"Clearfy: Компонент HTML сжатие не совместим с плагином Autoptimize, "
+"пожалуйста, не используйте их вместе, чтобы избежать конфликтов. Отключите "
+"компонент HTML сжатие"
+
+#: admin/boot.php:46 admin/pages/settings.php:101
 msgid "Optimize HTML Code?"
 msgstr "Оптимизировать HTML код?"
 
-#: admin/boot.php:24 admin/pages/settings.php:111
+#: admin/boot.php:52 admin/pages/settings.php:111
 msgid "Keep HTML comments?"
 msgstr "Оставлять HTML комментарии?"
 
-#: admin/boot.php:43
+#: admin/boot.php:69
 msgid "One click optimize html code"
 msgstr "Оптимизировать html код одним нажатием"
 
-#: admin/boot.php:45
+#: admin/boot.php:71
 msgid "One click optimize html code and scripts"
 msgstr "Оптимизировать html код и скрипты одним нажатием"
 
