@@ -125,15 +125,7 @@
 	// Если плагин работает, как аддон, то класс создается родительским плагином.
 
 	if( !defined('LOADING_HTML_MINIFY_AS_ADDON') ) {
-		new WHTM_Plugin(__FILE__, array(
-			'prefix' => 'wbcr_htm_', // префикс для базы данных и полей формы
-			'plugin_name' => 'wbcr_html_minify', // имя плагина, как уникальный идентификатор
-			'plugin_title' => __('Webcraftic HTML Minify', 'html-minify'), // заголовок плагина
-			'plugin_version' => WHTM_PLUGIN_VERSION, // текущая версия плагина
-			'required_php_version' => '5.2', // минимальная версия php для работы плагина
-			'required_wp_version' => '4.2', // минимальная версия wp для работы плагина
-			'plugin_build' => BUILD_TYPE, // сборка плагина
-			//'updates' => WHTM_PLUGIN_DIR . '/updates/' в этой папке хранятся миграции для разных версий плагина
-		));
+		new WHTM_Plugin(__FILE__, $plugin_info);
 	}
-	
+
+
