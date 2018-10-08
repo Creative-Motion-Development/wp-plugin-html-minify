@@ -11,7 +11,7 @@
 		exit;
 	}
 	
-	class WHTM_SettingsPage extends Wbcr_FactoryPages000_ImpressiveThemplate {
+	class WHTM_SettingsPage extends Wbcr_FactoryClearfy000_PageBase {
 		
 		/**
 		 * The id of the page in the admin menu.
@@ -58,24 +58,6 @@
 			return defined('LOADING_HTML_MINIFY_AS_ADDON')
 				? __('HTML Minify', 'html-minify')
 				: __('General', 'html-minify');
-		}
-
-		/**
-		 * Requests assets (js and css) for the page.
-		 *
-		 * @see Wbcr_FactoryPages000_AdminPage
-		 *
-		 * @since 1.0.0
-		 * @return void
-		 */
-		public function assets($scripts, $styles)
-		{
-			parent::assets($scripts, $styles);
-
-			// Add Clearfy styles for HMWP pages
-			if( defined('WBCR_CLEARFY_PLUGIN_ACTIVE') ) {
-				$this->styles->add(WCL_PLUGIN_URL . '/admin/assets/css/general.css');
-			}
 		}
 
 		/**
