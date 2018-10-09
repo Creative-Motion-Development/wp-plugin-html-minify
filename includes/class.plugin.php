@@ -67,8 +67,6 @@
 					parent::__construct($plugin_path, $data);
 				}
 
-				self::app()->setTextDomain('html-minify', WHTM_PLUGIN_DIR);
-
 				$this->setModules();
 				$this->globalScripts();
 				
@@ -93,6 +91,25 @@
 			public static function app()
 			{
 				return self::$app;
+			}
+
+
+			/**
+			 * Выполнение действий после загрузки плагина
+			 * Подключаем все классы оптимизации и запускаем процесс
+			 */
+			public function pluginsLoaded()
+			{
+				self::app()->setTextDomain('html-minify', WHTM_PLUGIN_DIR);
+
+				require_once(WHTM_PLUGIN_DIR . '/includes/classes/class.mac-base.php');
+				require_once(WHTM_PLUGIN_DIR . '/includes/classes/class.mac-html.php');
+				require_once(WHTM_PLUGIN_DIR . '/includes/classes/class.mac-main.php');
+
+				require_once(WHTM_PLUGIN_DIR . '/includes/classes/ext/php/minify-html.php');
+
+				$plugin = new WHTM_PluginMain();
+				$plugin->start();
 			}
 
 			/**
@@ -145,22 +162,6 @@
 			{
 				//require(WHTM_PLUGIN_DIR . '/includes/classes/class.configurate-comments.php');
 				//new WHTM_ConfigComments(self::$app);
-			}
-
-			/**
-			 * Выполнение действий после загрузки плагина
-			 * Подключаем все классы оптимизации и запускаем процесс
-			 */
-			public function pluginsLoaded()
-			{
-				require_once(WHTM_PLUGIN_DIR . '/includes/classes/class.mac-base.php');
-				require_once(WHTM_PLUGIN_DIR . '/includes/classes/class.mac-html.php');
-				require_once(WHTM_PLUGIN_DIR . '/includes/classes/class.mac-main.php');
-
-				require_once(WHTM_PLUGIN_DIR . '/includes/classes/ext/php/minify-html.php');
-
-				$plugin = new WHTM_PluginMain();
-				$plugin->start();
 			}
 		}
 	}
