@@ -39,7 +39,7 @@ class WHTM_PluginMain
 	 * Initialization hooks
 	 */
 	public function hook() {
-		if ( WHTM_Plugin::app()->getOption('html_optimize') ) {
+		if ( WHTM_Plugin::app()->getPopulateOption('html_optimize') ) {
 			add_action( 'wp_loaded', array( $this, 'removeCacheMessage' ) );
 		}
 	}
@@ -88,7 +88,7 @@ class WHTM_PluginMain
 	 */
     public function run()
     {
-        if ( WHTM_Plugin::app()->getOption('html_optimize') ) {
+        if ( WHTM_Plugin::app()->getPopulateOption('html_optimize') ) {
             // Hook into WordPress frontend.
             if ( defined( 'WHTM_INIT_EARLIER' ) ) {
                 add_action( 'init', array( $this, 'startBuffering' ), self::INIT_EARLIER_PRIORITY );
@@ -250,13 +250,13 @@ class WHTM_PluginMain
 
         // Determine what needs to be ran.
         $classes = array();
-	    if ( WHTM_Plugin::app()->getOption( 'html_optimize' ) ) {
+	    if ( WHTM_Plugin::app()->getPopulateOption( 'html_optimize' ) ) {
 		    $classes[] = 'WHTM_PluginHTML';
 	    }
 
 	    $classoptions = array(
 		    'WHTM_PluginHTML'    => array(
-			    'keepcomments' => WHTM_Plugin::app()->getOption( 'html_keepcomments' ),
+			    'keepcomments' => WHTM_Plugin::app()->getPopulateOption( 'html_keepcomments' ),
 		    ),
 	    );
 

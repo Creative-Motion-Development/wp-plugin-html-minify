@@ -81,9 +81,9 @@
 			 * Статический метод для быстрого доступа к информации о плагине, а также часто использумых методах.
 			 *
 			 * Пример:
-			 * WHTM_Plugin::app()->getOption()
-			 * WHTM_Plugin::app()->updateOption()
-			 * WHTM_Plugin::app()->deleteOption()
+			 * WHTM_Plugin::app()->getPopulateOption()
+			 * WHTM_Plugin::app()->updatePopulateOption()
+			 * WHTM_Plugin::app()->deletePopulateOption()
 			 * WHTM_Plugin::app()->getPluginName()
 			 *
 			 * @return Wbcr_Factory000_Plugin
