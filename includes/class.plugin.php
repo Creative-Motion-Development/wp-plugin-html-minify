@@ -68,8 +68,7 @@
 				}
 
 				$this->setModules();
-				$this->globalScripts();
-				
+
 				if( is_admin() ) {
 					$this->adminScripts();
 				}
@@ -101,6 +100,10 @@
 			public function pluginsLoaded()
 			{
 				self::app()->setTextDomain('html-minify', WHTM_PLUGIN_DIR);
+
+				if( is_admin() ) {
+					$this->registerPages();
+				}
 
 				require_once(WHTM_PLUGIN_DIR . '/includes/classes/class.mac-base.php');
 				require_once(WHTM_PLUGIN_DIR . '/includes/classes/class.mac-html.php');
@@ -136,14 +139,14 @@
 			 */
 			private function registerPages()
 			{
+				if( defined('WMAC_PLUGIN_ACTIVE') ) {
+					return;
+				}
 
 				$admin_path = WHTM_PLUGIN_DIR . '/admin/pages';
 
 				// Пример основной страницы настроек
 				self::app()->registerPage('WHTM_SettingsPage', $admin_path . '/settings.php');
-
-				// Пример внутренней страницы настроек
-				//self::app()->registerPage('WHTM_StatisticPage', $admin_path . '/statistic.php');
 			}
 
 			/**
@@ -152,16 +155,6 @@
 			private function adminScripts()
 			{
 				require(WHTM_PLUGIN_DIR . '/admin/boot.php');
-				$this->registerPages();
-			}
-
-			/**
-			 * Подключаем глобальные функции
-			 */
-			private function globalScripts()
-			{
-				//require(WHTM_PLUGIN_DIR . '/includes/classes/class.configurate-comments.php');
-				//new WHTM_ConfigComments(self::$app);
 			}
 		}
 	}

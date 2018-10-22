@@ -73,33 +73,7 @@
 		 */
 		public function getPageOptions()
 		{
-			$options = array();
-
-			$options[] = array(
-				'type' => 'html',
-				'html' => '<div class="wbcr-factory-page-group-header"><strong>' . __('HTML Options', 'html-minify') . '</strong><p>' . __('Ever look at the HTML markup of your website and notice how sloppy and amateurish it looks? The Minify HTML options cleans up sloppy looking markup and minifies, which also speeds up download.', 'html-minify') . '</p></div>'
-			);
-
-			// Переключатель
-			$options[] = array(
-				'type' => 'checkbox',
-				'way' => 'buttons',
-				'name' => 'html_optimize',
-				'title' => __('Optimize HTML Code?', 'html-minify'),
-				'layout' => array('hint-type' => 'icon', 'hint-icon-color' => 'grey'),
-				'default' => false,
-			);
-
-			// Переключатель
-			$options[] = array(
-				'type' => 'checkbox',
-				'way' => 'buttons',
-				'name' => 'html_keepcomments',
-				'title' => __('Keep HTML comments?', 'html-minify'),
-				'layout' => array('hint-type' => 'icon', 'hint-icon-color' => 'grey'),
-				'hint' => __('Enable this if you want HTML comments to remain in the page.', 'html-minify'),
-				'default' => false
-			);
+			$options = wbcr_htm_settings_form_options();
 
 			$formOptions = array();
 			
