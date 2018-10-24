@@ -8,6 +8,7 @@
 	 * Text Domain: html-minify
 	 * Domain Path: /languages/
 	 * Author URI: https://clearfy.pro
+	 * Framework Version: FACTORY_000_VERSION
 	 */
 
 	/*
