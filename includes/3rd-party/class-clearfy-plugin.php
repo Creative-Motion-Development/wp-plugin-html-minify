@@ -70,11 +70,11 @@ class WHTM_Plugin {
 			$this->register_pages();
 		}
 
-		require_once( WHTM_PLUGIN_DIR . '/includes/classes/class.mac-base.php' );
-		require_once( WHTM_PLUGIN_DIR . '/includes/classes/class.mac-html.php' );
-		require_once( WHTM_PLUGIN_DIR . '/includes/classes/class.mac-main.php' );
+		require_once( WHTM_PLUGIN_DIR . '/includes/classes/class-base.php' );
+		require_once( WHTM_PLUGIN_DIR . '/includes/classes/class-html.php' );
+		require_once( WHTM_PLUGIN_DIR . '/includes/classes/class-main.php' );
 
-		require_once( WHTM_PLUGIN_DIR . '/includes/classes/ext/php/minify-html.php' );
+		require_once( WHTM_PLUGIN_DIR . '/includes/classes/ext/php/class-minify-html.php' );
 
 		$plugin = new WHTM_PluginMain();
 		$plugin->start();
@@ -98,7 +98,7 @@ class WHTM_Plugin {
 		$admin_path = WHTM_PLUGIN_DIR . '/admin/pages';
 
 		// Пример основной страницы настроек
-		self::app()->registerPage( 'WHTM_SettingsPage', $admin_path . '/settings.php' );
+		self::app()->registerPage( 'WHTM_SettingsPage', $admin_path . '/class-pages-settings.php' );
 	}
 
 	/**
