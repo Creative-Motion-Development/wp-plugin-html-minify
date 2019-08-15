@@ -1,4 +1,4 @@
-=== HTML optimization  ===
+=== Webcraftic HTML minify  ===
 Tags: html optimization
 Contributors: webcraftic
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VDX7JNTQPNPFW
@@ -7,6 +7,9 @@ Tested up to: 4.9
 Requires PHP: 5.2
 Stable tag: trunk
 License: GPLv2
+
+= 1.1.0 =
+* Refactoring
 
 = 1.0.0 =
 * Plugin release
