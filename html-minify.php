@@ -96,7 +96,7 @@ define( 'WHTM_PLUGIN_ACTIVE', true );
 define( 'WHTM_PLUGIN_VERSION', $whtml_compatibility->get_plugin_version() );
 define( 'WHTM_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'WHTM_PLUGIN_BASE', plugin_basename( __FILE__ ) );
-define( 'WHTM_PLUGIN_URL', plugins_url( null, __FILE__ ) );
+define( 'WHTM_PLUGIN_URL', plugins_url( '', __FILE__ ) );
 
 
 #comp remove
