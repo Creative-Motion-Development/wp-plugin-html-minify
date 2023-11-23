@@ -4,7 +4,7 @@
  * Plugin URI: https://webcraftic.com
  * Description: Ever look at the HTML markup of your website and notice how sloppy and amateurish it looks? The HTML Мinify options cleans up sloppy looking markup and minifies, which also speeds up download.
  * Author: Webcraftic <wordpress.webraftic@gmail.com>
- * Version: 1.1.1
+ * Version: 1.1.2
  * Text Domain: html-minify
  * Domain Path: /languages/
  * Author URI: https://webcraftic.com
